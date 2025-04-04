@@ -29,14 +29,14 @@ tabrewind
 edit flagellant.txt
 argglobal
 balt characteristics.csv
-setlocal fdm=syntax
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
+setlocal foldmethod=syntax
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
 let s:l = 4 - ((3 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
@@ -47,14 +47,14 @@ tabnext
 edit lore.txt
 argglobal
 balt flagellant.txt
-setlocal fdm=syntax
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
+setlocal foldmethod=syntax
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
 let s:l = 58 - ((24 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
@@ -65,14 +65,14 @@ tabnext
 edit talents.txt
 argglobal
 balt lore.txt
-setlocal fdm=syntax
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
+setlocal foldmethod=syntax
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
 let s:l = 1 - ((0 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
@@ -107,14 +107,14 @@ exe '2resize ' . ((&lines * 13 + 14) / 28)
 exe 'vert 2resize ' . ((&columns * 60 + 62) / 124)
 exe 'vert 3resize ' . ((&columns * 63 + 62) / 124)
 argglobal
-setlocal fdm=syntax
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
+setlocal foldmethod=syntax
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
 let s:l = 3 - ((2 * winheight(0) + 5) / 11)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
@@ -128,14 +128,14 @@ if &buftype ==# 'terminal'
   silent file skills.csv
 endif
 balt charcalc.py
-setlocal fdm=syntax
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
+setlocal foldmethod=syntax
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
 let s:l = 1 - ((0 * winheight(0) + 6) / 13)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
@@ -149,14 +149,14 @@ if &buftype ==# 'terminal'
   silent file skills.csv
 endif
 balt characteristics.csv
-setlocal fdm=syntax
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
+setlocal foldmethod=syntax
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
 let s:l = 36 - ((24 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
@@ -164,13 +164,12 @@ normal! zt
 keepjumps 36
 normal! 0
 wincmd w
-3wincmd w
 exe '1resize ' . ((&lines * 11 + 14) / 28)
 exe 'vert 1resize ' . ((&columns * 60 + 62) / 124)
 exe '2resize ' . ((&lines * 13 + 14) / 28)
 exe 'vert 2resize ' . ((&columns * 60 + 62) / 124)
 exe 'vert 3resize ' . ((&columns * 63 + 62) / 124)
-tabnext 4
+tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
@@ -185,7 +184,6 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nmap <leader>fs :lua require'fzf-lua'.fzf_live("./filtercs.py <query> 2>/dev/null", { prompt="scs> " , exec_empty_query=true })<cr>
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
