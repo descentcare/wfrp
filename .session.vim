@@ -13,12 +13,13 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +1 characteristics.csv
-badd +4 flagellant.txt
+badd +3 characteristics.csv
+badd +1 flagellant.txt
 badd +1 skills.csv
 badd +30 charcalc.py
-badd +58 lore.txt
+badd +1 lore.txt
 badd +1 talents.txt
+badd +1 list.txt
 argglobal
 %argdel
 $argadd characteristics.csv
@@ -26,9 +27,9 @@ tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabrewind
-edit flagellant.txt
+edit list.txt
 argglobal
-balt characteristics.csv
+balt flagellant.txt
 setlocal foldmethod=syntax
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -37,11 +38,11 @@ setlocal foldlevel=0
 setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldenable
-let s:l = 4 - ((3 * winheight(0) + 12) / 25)
+let s:l = 1 - ((0 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 4
+keepjumps 1
 normal! 0
 tabnext
 edit lore.txt
@@ -55,11 +56,11 @@ setlocal foldlevel=0
 setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldenable
-let s:l = 58 - ((24 * winheight(0) + 12) / 25)
+let s:l = 1 - ((0 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 58
+keepjumps 1
 normal! 0
 tabnext
 edit talents.txt
@@ -73,7 +74,7 @@ setlocal foldlevel=0
 setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldenable
-let s:l = 1 - ((0 * winheight(0) + 12) / 25)
+let s:l = 1 - ((0 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -101,11 +102,11 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 11 + 14) / 28)
-exe 'vert 1resize ' . ((&columns * 60 + 62) / 124)
-exe '2resize ' . ((&lines * 13 + 14) / 28)
-exe 'vert 2resize ' . ((&columns * 60 + 62) / 124)
-exe 'vert 3resize ' . ((&columns * 63 + 62) / 124)
+exe '1resize ' . ((&lines * 10 + 13) / 26)
+exe 'vert 1resize ' . ((&columns * 57 + 58) / 117)
+exe '2resize ' . ((&lines * 12 + 13) / 26)
+exe 'vert 2resize ' . ((&columns * 57 + 58) / 117)
+exe 'vert 3resize ' . ((&columns * 59 + 58) / 117)
 argglobal
 setlocal foldmethod=syntax
 setlocal foldexpr=0
@@ -115,7 +116,7 @@ setlocal foldlevel=0
 setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldenable
-let s:l = 3 - ((2 * winheight(0) + 5) / 11)
+let s:l = 3 - ((2 * winheight(0) + 5) / 10)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -136,7 +137,7 @@ setlocal foldlevel=0
 setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldenable
-let s:l = 1 - ((0 * winheight(0) + 6) / 13)
+let s:l = 1 - ((0 * winheight(0) + 6) / 12)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -157,18 +158,18 @@ setlocal foldlevel=0
 setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldenable
-let s:l = 36 - ((24 * winheight(0) + 12) / 25)
+let s:l = 26 - ((12 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 36
+keepjumps 26
 normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 11 + 14) / 28)
-exe 'vert 1resize ' . ((&columns * 60 + 62) / 124)
-exe '2resize ' . ((&lines * 13 + 14) / 28)
-exe 'vert 2resize ' . ((&columns * 60 + 62) / 124)
-exe 'vert 3resize ' . ((&columns * 63 + 62) / 124)
+exe '1resize ' . ((&lines * 10 + 13) / 26)
+exe 'vert 1resize ' . ((&columns * 57 + 58) / 117)
+exe '2resize ' . ((&lines * 12 + 13) / 26)
+exe 'vert 2resize ' . ((&columns * 57 + 58) / 117)
+exe 'vert 3resize ' . ((&columns * 59 + 58) / 117)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
