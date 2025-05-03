@@ -14,7 +14,7 @@ else
   set shortmess=aoO
 endif
 badd +1 characteristics.csv
-badd +4 flagellant.txt
+badd +4 list.txt
 badd +1 skills.csv
 badd +30 charcalc.py
 badd +58 lore.txt
@@ -26,7 +26,7 @@ tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabnew +setlocal\ bufhidden=wipe
 tabrewind
-edit flagellant.txt
+edit list.txt
 argglobal
 balt characteristics.csv
 setlocal foldmethod=syntax
@@ -46,7 +46,7 @@ normal! 0
 tabnext
 edit lore.txt
 argglobal
-balt flagellant.txt
+balt list.txt
 setlocal foldmethod=syntax
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
